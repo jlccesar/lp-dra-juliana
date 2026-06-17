@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dra. Juliana Jardim — Estética e Harmonização Facial Avançadas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Hanken+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<script src="image-slot.js"></script>
+<style>
+  :root{
+    /* warm quiet-luxury palette */
+    --cream: oklch(0.975 0.008 70);
+    --paper: oklch(0.955 0.012 68);
+    --sand: oklch(0.915 0.018 66);
+    --blush: oklch(0.88 0.035 22);
+    --blush-soft: oklch(0.93 0.022 24);
+    --wine: oklch(0.34 0.085 8);
+    --wine-deep: oklch(0.255 0.06 10);
+    --bronze: oklch(0.62 0.06 60);
+    --bronze-soft: oklch(0.72 0.045 62);
+    --ink: oklch(0.27 0.012 40);
+    --ink-soft: oklch(0.46 0.012 45);
+    --line: oklch(0.83 0.02 60);
+
+    --serif: "Cormorant Garamond", Georgia, serif;
+    --sans: "Hanken Grotesk", system-ui, sans-serif;
+
+    --maxw: 1240px;
+    --pad: clamp(20px, 5vw, 80px);
+  }
+
+  *{ box-sizing: border-box; margin: 0; padding: 0; }
+  html{ scroll-behavior: smooth; }
+  body{
+    font-family: var(--sans);
+    background: var(--cream);
+    color: var(--ink);
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  ::selection{ background: var(--blush); color: var(--wine-deep); }
+  image-slot{ background:
+      repeating-linear-gradient(45deg, oklch(0.915 0.018 66) 0 14px, oklch(0.905 0.02 64) 14px 28px);
+    border: 1px solid var(--line); color: var(--ink-soft); }
+
+  h1,h2,h3,h4{ font-family: var(--serif); font-weight: 500; line-height: 1.04; letter-spacing: -0.01em; color: var(--wine-deep); }
+  .eyebrow{
+    font-family: var(--sans);
+    font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.32em; text-transform: uppercase;
+    color: var(--bronze);
+    display: inline-flex; align-items: center; gap: 0.7em;
+  }
+  .eyebrow::before{ content:""; width: 28px; height: 1px; background: var(--bronze); display:inline-block; }
+  .eyebrow.center::after{ content:""; width: 28px; height: 1px; background: var(--bronze); display:inline-block; }
+
+  a{ color: inherit; text-decoration: none; }
+  .container{ max-width: var(--maxw); margin: 0 auto; padding-left: var(--pad); padding-right: var(--pad); }
+
+  /* ---------- buttons ---------- */
+  .btn{
+    font-family: var(--sans); font-size: 0.82rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 1.05em 2.1em; border-radius: 100px; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 0.7em;
+    border: 1px solid transparent; transition: all .35s cubic-bezier(.2,.7,.2,1);
+    white-space: nowrap;
+  }
+  .btn-primary{ background: var(--wine); color: var(--cream); }
+  .btn-primary:hover{ background: var(--wine-deep); transform: translateY(-2px); box-shadow: 0 14px 30px -12px oklch(0.34 0.085 8 / .55); }
+  .btn-ghost{ background: transparent; color: var(--wine); border-color: var(--line); }
+  .btn-ghost:hover{ border-color: var(--wine); background: oklch(0.34 0.085 8 / .04); }
+  .btn .arr{ transition: transform .35s; }
+  .btn:hover .arr{ transform: translateX(4px); }
+
+  /* ---------- nav ---------- */
+  header.nav{
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    transition: background .4s, box-shadow .4s, padding .4s;
+    padding: 22px 0;
+  }
+  header.nav.scrolled{
+    background: oklch(0.975 0.008 70 / .85);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 1px 0 var(--line);
+    padding: 14px 0;
+  }
+  .nav-inner{ display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .logo{ display: flex; align-items:center; line-height: 1; }
+  .logo-img{ height: 52px; width:auto; display:block; transition: height .4s; }
+  header.nav.scrolled .logo-img{ height: 42px; }
+  .logo .mark{ font-family: var(--serif); font-size: 1.5rem; font-weight: 600; color: var(--wine-deep); letter-spacing: 0.01em; }
+  .logo .sub{ font-family: var(--sans); font-size: 0.56rem; font-weight: 600; letter-spacing: 0.36em; text-transform: uppercase; color: var(--bronze); margin-top: 4px; }
+  .nav-links{ display: flex; gap: 36px; list-style: none; }
+  .nav-links a{ font-size: 0.82rem; font-weight: 500; letter-spacing: 0.03em; color: var(--ink); position: relative; padding: 4px 0; }
+  .nav-links a::after{ content:""; position:absolute; left:0; bottom:0; width:0; height:1px; background: var(--wine); transition: width .35s; }
+  .nav-links a:hover{ color: var(--wine); }
+  .nav-links a:hover::after{ width:100%; }
+  .nav-cta{ display:flex; align-items:center; gap: 18px; }
+  .menu-toggle{ display:none; background:none; border:none; cursor:pointer; flex-direction:column; gap:5px; padding:8px; }
+  .menu-toggle span{ width:24px; height:1.5px; background: var(--wine-deep); transition: .3s; }
+
+  /* ---------- hero ---------- */
+  .hero{ padding: 168px 0 90px; position: relative; }
+  .hero-grid{ display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
+  .hero h1{ font-size: clamp(2.7rem, 5.4vw, 4.7rem); margin: 26px 0 0; line-height: 1.14; }
+  .hero h1 em{ font-style: italic; color: var(--wine); }
+  .hero p.lead{ font-size: 1.12rem; color: var(--ink-soft); max-width: 30em; margin: 38px 0 0; line-height: 1.7; }
+  .hero-actions{ display: flex; gap: 16px; margin-top: 40px; flex-wrap: wrap; }
+  .hero-locs{ display:flex; gap: 26px; margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--line); flex-wrap: wrap; }
+  .hero-locs .loc{ font-size: 0.82rem; }
+  .hero-locs .loc strong{ display:block; font-family: var(--serif); font-size: 1.2rem; font-weight: 600; color: var(--wine-deep); letter-spacing: 0; }
+  .hero-locs .loc span{ color: var(--ink-soft); letter-spacing: 0.04em; }
+
+  .hero-visual{ position: relative; }
+  .hero-visual image-slot{ width: 100%; height: 560px; display:block; box-shadow: 0 40px 80px -40px oklch(0.34 0.085 8 / .4); }
+  .hero-badge{
+    position: absolute; left: -36px; bottom: 48px;
+    background: var(--cream); border: 1px solid var(--line);
+    padding: 18px 26px; border-radius: 4px; box-shadow: 0 20px 50px -24px oklch(0.34 0.085 8 / .35);
+    display:flex; align-items:center; gap: 16px;
+  }
+  .hero-badge .num{ font-family: var(--serif); font-size: 2.6rem; font-weight: 600; color: var(--wine); line-height: 1; }
+  .hero-badge .lbl{ font-size: 0.74rem; letter-spacing: 0.04em; color: var(--ink-soft); line-height: 1.3; max-width: 9em; }
+  .hero-deco{ position:absolute; top:-30px; right:-30px; width: 120px; height:120px; border:1px solid var(--bronze-soft); border-radius:50%; opacity:.5; z-index:-1; }
+
+  /* ---------- marquee / trust ---------- */
+  .trust{ background: var(--wine-deep); color: var(--blush-soft); padding: 30px 0; overflow:hidden; }
+  .trust-track{ display:flex; gap: 64px; align-items:center; white-space:nowrap; animation: marq 38s linear infinite; width: max-content; }
+  .trust-track span{ font-family: var(--serif); font-style: italic; font-size: 1.45rem; color: oklch(0.88 0.035 22); display:inline-flex; align-items:center; gap: 64px; }
+  .trust-track span::after{ content:"·"; color: var(--bronze); }
+  @keyframes marq{ to{ transform: translateX(-50%); } }
+
+  /* ---------- section base ---------- */
+  section{ position: relative; }
+  .sec-pad{ padding: clamp(80px, 11vw, 150px) 0; }
+  .sec-head{ max-width: 56ch; }
+  .sec-head.center{ margin: 0 auto; text-align: center; }
+  .sec-head h2{ font-size: clamp(2.2rem, 4.6vw, 3.7rem); margin: 20px 0 0; }
+  .sec-head h2 em{ font-style: italic; color: var(--wine); }
+  .sec-head p{ color: var(--ink-soft); font-size: 1.06rem; margin: 22px 0 0; line-height: 1.7; }
+
+  /* ---------- treatments ---------- */
+  .treat{ background: var(--paper); }
+  .filters{ display:flex; gap: 10px; flex-wrap: wrap; margin: 44px 0 50px; }
+  .filter{
+    font-family: var(--sans); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.06em;
+    padding: 0.7em 1.4em; border-radius: 100px; cursor: pointer;
+    background: transparent; border: 1px solid var(--line); color: var(--ink-soft);
+    transition: all .3s;
+  }
+  .filter:hover{ border-color: var(--wine); color: var(--wine); }
+  .filter.active{ background: var(--wine); color: var(--cream); border-color: var(--wine); }
+  .treat-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .card{
+    background: var(--cream); border: 1px solid var(--line); border-radius: 6px; overflow:hidden;
+    display:flex; flex-direction:column; transition: transform .45s cubic-bezier(.2,.7,.2,1), box-shadow .45s;
+    cursor: pointer;
+  }
+  .card:hover{ transform: translateY(-6px); box-shadow: 0 30px 60px -34px oklch(0.34 0.085 8 / .4); }
+  .card image-slot{ width:100%; height: 250px; display:block; }
+  .card-tag{ position:absolute; top:14px; left:14px; background: oklch(0.975 0.008 70 / .92); color: var(--wine); font-size: 0.64rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; padding: 6px 12px; border-radius: 100px; }
+  .card-img-wrap{ position: relative; }
+  .card-body{ padding: 26px 26px 28px; display:flex; flex-direction:column; flex:1; }
+  .card-body h3{ font-size: 1.55rem; }
+  .card-body p{ font-size: 0.92rem; color: var(--ink-soft); margin: 12px 0 22px; line-height: 1.6; flex:1; }
+  .card-link{ font-size: 0.76rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--wine); display:inline-flex; align-items:center; gap: 8px; }
+  .card-link .arr{ transition: transform .35s; }
+  .card:hover .card-link .arr{ transform: translateX(5px); }
+  .treat-foot{ text-align:center; margin-top: 52px; }
+
+  /* ---------- about ---------- */
+  .about-grid{ display:grid; grid-template-columns: 0.92fr 1.08fr; gap: clamp(36px, 6vw, 86px); align-items:center; }
+  .about-visual{ position:relative; }
+  .about-visual image-slot{ width:100%; height: 620px; display:block; }
+  .about-visual .frame{ position:absolute; inset: 22px -22px -22px 22px; border:1px solid var(--bronze-soft); z-index:-1; }
+  .about h2{ font-size: clamp(2.2rem, 4.6vw, 3.7rem); margin: 18px 0 0; }
+  .about h2 em{ font-style:italic; color: var(--wine); }
+  .about .bio{ font-size: 1.08rem; color: var(--ink-soft); margin-top: 26px; line-height: 1.75; }
+  .about .quote{ font-family: var(--serif); font-style: italic; font-size: 1.9rem; color: var(--wine); margin-top: 38px; padding-left: 24px; border-left: 2px solid var(--bronze); line-height: 1.25; }
+  .about .sign{ font-family: var(--serif); font-size: 1.6rem; color: var(--wine-deep); margin-top: 30px; }
+  .credentials{ display:grid; grid-template-columns: repeat(3,1fr); gap: 22px; margin-top: 40px; padding-top: 36px; border-top:1px solid var(--line); }
+  .credentials .c .n{ font-family: var(--serif); font-size: 2.7rem; font-weight: 600; color: var(--wine); line-height:1; }
+  .credentials .c .t{ font-size: 0.8rem; color: var(--ink-soft); margin-top: 8px; letter-spacing: 0.03em; }
+
+  /* ---------- reviews ---------- */
+  .reviews{ background: var(--wine-deep); color: var(--cream); overflow:hidden; }
+  .reviews .sec-head h2{ color: var(--cream); }
+  .reviews .sec-head h2 em{ color: var(--blush); }
+  .reviews .sec-head p{ color: oklch(0.88 0.035 22 / .8); }
+  .rev-top{ display:flex; justify-content:space-between; align-items:flex-end; gap: 30px; flex-wrap:wrap; }
+  .rev-rating{ display:flex; align-items:center; gap: 16px; flex-shrink:0; }
+  .rev-rating .score{ font-family: var(--serif); font-size: 3.4rem; color: var(--blush); line-height:1; }
+  .rev-rating .stars{ color: var(--bronze-soft); font-size: 1.1rem; letter-spacing: 2px; }
+  .rev-rating .meta{ font-size: 0.78rem; color: oklch(0.88 0.035 22 / .75); margin-top: 4px; letter-spacing: 0.04em; }
+  .rev-carousel{ position:relative; margin-top: 56px; }
+  .rev-viewport{ overflow-x:auto; overflow-y:hidden; scroll-snap-type:x mandatory; scroll-behavior:smooth;
+    -webkit-mask-image: linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent); mask-image: linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);
+    scrollbar-width:none; -ms-overflow-style:none; }
+  .rev-viewport::-webkit-scrollbar{ display:none; }
+  .rev-track{ display:flex; gap: 24px; width:max-content; padding: 6px var(--pad); }
+  .rev-card{ scroll-snap-align:center; }
+  .rev-arrow{ position:absolute; top:50%; transform:translateY(-50%); z-index:6; width:54px; height:54px; border-radius:50%;
+    background:var(--cream); color:var(--wine); border:none; cursor:pointer; display:flex; align-items:center; justify-content:center;
+    box-shadow:0 14px 34px -12px rgba(0,0,0,.6); transition: transform .3s, background .3s, color .3s; }
+  .rev-arrow svg{ width:22px; height:22px; }
+  .rev-arrow:hover{ background:var(--wine); color:var(--cream); }
+  .rev-arrow.prev{ left: 18px; }
+  .rev-arrow.next{ right: 18px; }
+  .rev-arrow.next:hover{ transform:translateY(-50%) scale(1.06); }
+  .rev-arrow.prev:hover{ transform:translateY(-50%) scale(1.06); }
+  .rev-card{
+    width: 360px; background: var(--cream); border: 1px solid oklch(0.88 0.035 22 / .25);
+    border-radius: 12px; padding: 30px; box-shadow: 0 26px 50px -28px rgba(0,0,0,.55);
+  }
+  .rev-card .head{ display:flex; align-items:center; gap: 14px; margin-bottom: 18px; }
+  .rev-card .who{ flex:1; min-width:0; }
+  .rev-card .g-logo{ flex-shrink:0; display:flex; width:22px; height:22px; }
+  .rev-card .g-logo svg{ width:100%; height:100%; }
+  .rev-card .av{ width:46px; height:46px; border-radius:50%; background: var(--bronze); color: var(--wine-deep); display:flex; align-items:center; justify-content:center; font-family: var(--serif); font-size: 1.3rem; font-weight:600; flex-shrink:0; }
+  .rev-card .nm{ font-weight: 600; font-size: 0.95rem; color: var(--wine-deep); }
+  .rev-card .src{ font-size: 0.72rem; color: var(--ink-soft); letter-spacing: 0.04em; }
+  .rev-card .stars{ color: #E8A93C; font-size: 0.95rem; letter-spacing: 2px; margin-bottom: 12px; }
+  .rev-card p{ font-size: 0.95rem; color: var(--ink); line-height: 1.65; }
+
+  /* ---------- faq ---------- */
+  .faq-grid{ display:grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(40px,6vw,80px); align-items:start; }
+  .faq-list{ border-top: 1px solid var(--line); }
+  .faq-item{ border-bottom: 1px solid var(--line); }
+  .faq-q{ width:100%; background:none; border:none; cursor:pointer; text-align:left; padding: 28px 0; display:flex; justify-content:space-between; align-items:center; gap: 24px; font-family: var(--serif); font-size: 1.4rem; color: var(--wine-deep); font-weight: 500; }
+  .faq-q:hover{ color: var(--wine); }
+  .faq-icon{ flex-shrink:0; width:30px; height:30px; border:1px solid var(--line); border-radius:50%; position:relative; transition: .4s; }
+  .faq-icon::before,.faq-icon::after{ content:""; position:absolute; background: var(--wine); transition:.4s; }
+  .faq-icon::before{ width:11px; height:1.5px; top:50%; left:50%; transform: translate(-50%,-50%); }
+  .faq-icon::after{ width:1.5px; height:11px; top:50%; left:50%; transform: translate(-50%,-50%); }
+  .faq-item.open .faq-icon{ background: var(--wine); border-color: var(--wine); }
+  .faq-item.open .faq-icon::before{ background: var(--cream); }
+  .faq-item.open .faq-icon::after{ transform: translate(-50%,-50%) scaleY(0); }
+  .faq-a{ max-height:0; overflow:hidden; transition: max-height .5s cubic-bezier(.2,.7,.2,1); }
+  .faq-a-inner{ padding: 0 0 28px; color: var(--ink-soft); font-size: 0.98rem; line-height: 1.75; max-width: 60ch; }
+
+  /* ---------- locations ---------- */
+  .locs{ background: var(--paper); }
+  .loc-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 52px; }
+  .loc-card{ background: var(--cream); border:1px solid var(--line); border-radius:8px; overflow:hidden; display:flex; flex-direction:column; }
+  .loc-map{ height: 300px; background: var(--sand); position:relative; overflow:hidden; }
+  .loc-map iframe{ width:100%; height:100%; border:0; display:block; filter: grayscale(0.15) contrast(1.03); transition: filter .4s; }
+  .loc-card:hover .loc-map iframe{ filter:none; }
+  .loc-map .placeholder{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:10px; background:
+      repeating-linear-gradient(45deg, oklch(0.915 0.018 66) 0 12px, oklch(0.9 0.02 64) 12px 24px); }
+  .loc-map .placeholder .pin{ width:42px;height:42px;border-radius:50% 50% 50% 0; background: var(--wine); transform: rotate(-45deg); box-shadow:0 8px 20px -6px oklch(0.34 0.085 8/.5); }
+  .loc-map .placeholder .pin::after{ content:""; position:absolute; width:14px;height:14px;background:var(--cream);border-radius:50%; top:14px; left:14px; }
+  .loc-map .placeholder code{ font-family: ui-monospace, monospace; font-size:0.72rem; color: var(--ink-soft); letter-spacing:0.04em; transform: translateY(8px); }
+  .loc-body{ padding: 30px 32px 34px; }
+  .loc-body .city{ font-size: 0.72rem; font-weight:600; letter-spacing:0.24em; text-transform:uppercase; color: var(--bronze); }
+  .loc-body h3{ font-size: 1.8rem; margin: 10px 0 14px; }
+  .loc-body p{ color: var(--ink-soft); font-size: 0.96rem; line-height:1.6; }
+  .loc-body .ln{ display:inline-flex; align-items:center; gap:8px; margin-top:20px; font-size:0.78rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color: var(--wine); }
+
+  /* ---------- closing cta ---------- */
+  .cta{ position: relative; overflow:hidden; background: var(--wine); color: var(--cream); }
+  .cta .container{ position: relative; z-index:2; text-align:center; padding-top: clamp(90px,12vw,160px); padding-bottom: clamp(90px,12vw,160px); }
+  .cta .eyebrow{ color: var(--blush); }
+  .cta .eyebrow::before,.cta .eyebrow.center::after{ background: var(--blush); }
+  .cta h2{ color: var(--cream); font-size: clamp(2.6rem,6vw,5rem); margin: 22px auto 0; max-width: 16ch; }
+  .cta h2 em{ font-style:italic; color: var(--blush); }
+  .cta p{ color: oklch(0.93 0.022 24 / .85); font-size: 1.1rem; max-width: 40ch; margin: 26px auto 0; }
+  .cta .btn-primary{ background: var(--cream); color: var(--wine-deep); margin-top: 42px; }
+  .cta .btn-primary:hover{ background: var(--blush-soft); }
+  .cta .glow{ position:absolute; width: 700px; height:700px; border-radius:50%; background: radial-gradient(circle, oklch(0.88 0.035 22/.18), transparent 65%); top:-200px; left:50%; transform:translateX(-50%); z-index:1; }
+  .cta-ring{ position:absolute; border:1px solid oklch(0.88 0.035 22/.2); border-radius:50%; z-index:1; }
+
+  /* ---------- footer ---------- */
+  footer{ background: var(--wine-deep); color: oklch(0.93 0.022 24 / .7); padding: 70px 0 36px; }
+  .foot-grid{ display:grid; grid-template-columns: 1.4fr 1fr 1fr 1.2fr; gap: 40px; }
+  .foot-grid .mark{ font-family: var(--serif); font-size: 1.6rem; color: var(--cream); }
+  .foot-grid .mark + p{ font-size:0.9rem; margin-top:16px; max-width: 26ch; line-height:1.6; }
+  .foot-logo{ width: 210px; max-width: 70%; height:auto; display:block; }
+  .foot-brand > p{ font-size:0.9rem; margin-top:18px; max-width: 28ch; line-height:1.6; }
+  .foot-social{ display:flex; gap:12px; margin-top:22px; }
+  .foot-social a{ width:40px; height:40px; border-radius:50%; border:1px solid oklch(0.88 0.035 22/.25); color: var(--blush-soft);
+    display:flex; align-items:center; justify-content:center; transition: all .3s; margin:0; }
+  .foot-social a svg{ width:19px; height:19px; }
+  .foot-social a:hover{ background: var(--blush-soft); color: var(--wine-deep); border-color: var(--blush-soft); transform: translateY(-2px); }
+  .foot-col h4{ font-family: var(--sans); font-size: 0.72rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color: var(--bronze-soft); margin-bottom: 18px; }
+  .foot-col a, .foot-col p{ display:block; font-size: 0.9rem; color: oklch(0.93 0.022 24 / .7); margin-bottom: 12px; transition: color .3s; }
+  .foot-col a:hover{ color: var(--cream); }
+  .foot-addr{ margin-bottom: 16px !important; }
+  .foot-addr strong{ display:block; color: var(--cream); font-weight:600; font-size:0.92rem; }
+  .foot-addr span{ display:block; font-size:0.8rem; color: oklch(0.93 0.022 24 / .55); margin-top:3px; line-height:1.45; }
+  .foot-addr:hover span{ color: oklch(0.93 0.022 24 / .8); }
+  .foot-bot{ margin-top: 56px; padding-top: 26px; border-top: 1px solid oklch(0.88 0.035 22/.15); display:flex; justify-content:space-between; gap:14px 20px; flex-wrap:wrap; font-size: 0.78rem; color: oklch(0.93 0.022 24/.5); }
+  .foot-bot a{ color: oklch(0.93 0.022 24/.5); transition: color .3s; }
+  .foot-bot a:hover{ color: var(--cream); }
+
+  /* ---------- reveal animations ---------- */
+  [data-reveal]{ opacity:0; transform: translateY(28px); transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); }
+  [data-reveal].in{ opacity:1; transform:none; }
+  [data-reveal-delay="1"]{ transition-delay: .1s; }
+  [data-reveal-delay="2"]{ transition-delay: .2s; }
+  [data-reveal-delay="3"]{ transition-delay: .3s; }
+  @media (prefers-reduced-motion: reduce){ [data-reveal]{ opacity:1; transform:none; } html{ scroll-behavior:auto; } .trust-track,.rev-track{ animation:none; } }
+
+  /* ---------- whatsapp float ---------- */
+  .wa-float{ position: fixed; right: 26px; bottom: 26px; z-index: 90; width: 60px; height: 60px; border-radius: 50%;
+    background: #25D366; color: #fff; display:flex; align-items:center; justify-content:center;
+    box-shadow: 0 12px 30px -8px rgba(37,211,102,.6); cursor:pointer; border:none;
+    transition: transform .3s, box-shadow .3s; }
+  .wa-float:hover{ transform: scale(1.08); box-shadow: 0 16px 38px -8px rgba(37,211,102,.7); }
+  .wa-float svg{ width:32px; height:32px; position:relative; z-index:2; }
+  .wa-float::after{ content:""; position:absolute; inset:0; border-radius:50%; border:2px solid #25D366; animation: waPulse 2.4s ease-out infinite; }
+  .wa-tip{ position:absolute; right:74px; top:50%; transform:translateY(-50%); background:var(--wine-deep); color:var(--cream);
+    font-size:0.8rem; font-weight:500; letter-spacing:.02em; padding:9px 15px; border-radius:8px; white-space:nowrap; opacity:0; pointer-events:none;
+    transition:opacity .3s, transform .3s; box-shadow:0 8px 20px -8px rgba(0,0,0,.4); }
+  .wa-tip::after{ content:""; position:absolute; right:-5px; top:50%; transform:translateY(-50%) rotate(45deg); width:10px;height:10px;background:var(--wine-deep); }
+  .wa-float:hover .wa-tip{ opacity:1; transform:translateY(-50%) translateX(-4px); }
+  @keyframes waPulse{ 0%{ transform:scale(1); opacity:.6; } 100%{ transform:scale(1.5); opacity:0; } }
+
+  /* ---------- booking modal ---------- */
+  .modal-overlay{ position:fixed; inset:0; z-index:200; background: oklch(0.255 0.06 10 / .55); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+    display:flex; align-items:center; justify-content:center; padding:24px; opacity:0; pointer-events:none; transition:opacity .35s; }
+  .modal-overlay.open{ opacity:1; pointer-events:auto; }
+  .modal{ background:var(--cream); border-radius:14px; width:min(460px,100%); padding: clamp(28px,4vw,44px);
+    box-shadow:0 40px 90px -30px rgba(0,0,0,.5); transform:translateY(20px) scale(.98); transition:transform .4s cubic-bezier(.2,.7,.2,1);
+    max-height:92vh; overflow:auto; position:relative; }
+  .modal-overlay.open .modal{ transform:none; }
+  .modal-close{ position:absolute; top:18px; right:18px; width:36px; height:36px; border-radius:50%; border:1px solid var(--line);
+    background:transparent; cursor:pointer; color:var(--ink-soft); font-size:1rem; line-height:1; transition:.3s; }
+  .modal-close:hover{ background:var(--wine); color:var(--cream); border-color:var(--wine); }
+  .modal .eyebrow{ margin-bottom:14px; }
+  .modal h3{ font-size:2rem; line-height:1.1; }
+  .modal h3 em{ font-style:italic; color:var(--wine); }
+  .modal .desc{ color:var(--ink-soft); font-size:0.95rem; margin-top:12px; line-height:1.55; }
+  .modal form{ margin-top:26px; display:flex; flex-direction:column; gap:16px; }
+  .field label{ display:block; font-size:0.74rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:7px; }
+  .field input{ width:100%; padding:13px 16px; border:1px solid var(--line); border-radius:8px; background:var(--paper);
+    font-family:var(--sans); font-size:0.98rem; color:var(--ink); transition:border-color .25s, box-shadow .25s; }
+  .field input:focus{ outline:none; border-color:var(--wine); box-shadow:0 0 0 3px oklch(0.34 0.085 8 / .12); }
+  .field input::placeholder{ color:oklch(0.46 0.012 45 / .55); }
+  .modal .btn{ justify-content:center; background:#25D366; color:#fff; margin-top:6px; }
+  .modal .btn:hover{ background:#1eb958; transform:translateY(-2px); box-shadow:0 14px 30px -12px rgba(37,211,102,.6); }
+  .modal .btn svg{ width:20px; height:20px; }
+  .modal .reassure{ text-align:center; font-size:0.76rem; color:var(--ink-soft); margin-top:4px; letter-spacing:.02em; }
+  .modal.modal-wide{ width:min(600px,100%); }
+  .modal-wide h3{ font-size:2.3rem; margin-top:2px; }
+  .modal-wide .desc{ font-size:1rem; line-height:1.7; margin-top:18px; }
+  .proc-actions{ display:flex; gap:12px; margin-top:32px; flex-wrap:wrap; }
+  .proc-actions .btn{ flex:1 1 200px; justify-content:center; }
+  .btn-wa{ background:#25D366; color:#fff; }
+  .btn-wa:hover{ background:#1eb958; transform:translateY(-2px); box-shadow:0 14px 30px -12px rgba(37,211,102,.6); }
+  .btn-wa svg{ width:18px; height:18px; }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 1080px){ .treat-grid{ grid-template-columns: repeat(2,1fr); } .foot-grid{ grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 900px){
+    .hero-grid, .about-grid, .faq-grid, .loc-grid{ grid-template-columns: 1fr; }
+    .hero{ padding-top: 140px; }
+    .hero-visual{ order:-1; }
+    .hero-visual image-slot{ height: 420px; }
+    .about-visual image-slot{ height: 500px; }
+    .nav-links{ display:none; }
+    .menu-toggle{ display:flex; }
+    .nav-cta .btn{ display:none; }
+  }
+  @media (max-width: 620px){
+    .treat-grid{ grid-template-columns: 1fr; }
+    .loc-grid, .foot-grid{ grid-template-columns: 1fr; }
+    .credentials{ grid-template-columns: 1fr 1fr; }
+    .hero-badge{ left: 0; }
+    .rev-top{ flex-direction: column; align-items:flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#top" class="logo" aria-label="Dra. Juliana Jardim">
+      <img src="assets/logo-trimmed.png" alt="Dra. Juliana Jardim" class="logo-img" />
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#tratamentos">Tratamentos</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#depoimentos">Depoimentos</a></li>
+        <li><a href="#perguntas">Perguntas</a></li>
+        <li><a href="#localizacao">Localização</a></li>
+      </ul>
+    </nav>
+    <div class="nav-cta">
+      <a href="#agendar" class="btn btn-primary">Agendar Consulta</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow" data-reveal>Brasília · Maceió · Recife</span>
+      <h1 data-reveal data-reveal-delay="1">Realce a beleza da sua <em>melhor versão</em></h1>
+      <p class="lead" data-reveal data-reveal-delay="2">Estética e harmonização facial avançadas para rejuvenescer e revelar a sua essência — com segurança, naturalidade e resultados que respeitam quem você é.</p>
+      <div class="hero-actions" data-reveal data-reveal-delay="2">
+        <a href="#agendar" class="btn btn-primary">Agendar Consulta <span class="arr">→</span></a>
+        <a href="#tratamentos" class="btn btn-ghost">Ver Tratamentos</a>
+      </div>
+      <div class="hero-locs" data-reveal data-reveal-delay="3">
+        <div class="loc"><strong>20+ anos</strong><span>de experiência clínica</span></div>
+        <div class="loc"><strong>5.0 ★</strong><span>avaliação no Google</span></div>
+        <div class="loc"><strong>+30</strong><span>procedimentos faciais</span></div>
+      </div>
+    </div>
+    <div class="hero-visual" data-reveal data-reveal-delay="1">
+      <div class="hero-deco"></div>
+      <image-slot id="hero-portrait" shape="rounded" radius="8" placeholder="Retrato da Dra. Juliana — 4:5 vertical"></image-slot>
+      <div class="hero-badge">
+        <span class="num">★</span>
+        <span class="lbl">Especialista em Harmonização Facial Avançada</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST MARQUEE ============ -->
+<div class="trust" aria-hidden="true">
+  <div class="trust-track">
+    <span>Naturalidade<span></span></span><span>Segurança</span><span>Resultados imediatos</span><span>Mínimo desconforto</span><span>Atendimento personalizado</span><span>Tecnologia avançada</span>
+    <span>Naturalidade</span><span>Segurança</span><span>Resultados imediatos</span><span>Mínimo desconforto</span><span>Atendimento personalizado</span><span>Tecnologia avançada</span>
+  </div>
+</div>
+
+<!-- ============ TREATMENTS ============ -->
+<section class="treat sec-pad" id="tratamentos">
+  <div class="container">
+    <div class="sec-head center" data-reveal>
+      <span class="eyebrow center">Procedimentos Estéticos</span>
+      <h2>Tratamentos faciais <em>avançados</em></h2>
+      <p>Uma ampla gama de procedimentos minimamente invasivos para realçar sua beleza natural e elevar sua autoconfiança — cada plano pensado de forma única para você.</p>
+    </div>
+
+    <div class="filters" data-reveal id="filters">
+      <button class="filter active" data-cat="todos">Todos</button>
+      <button class="filter" data-cat="preenchimento">Preenchimento</button>
+      <button class="filter" data-cat="fios">Fios PDO</button>
+      <button class="filter" data-cat="bio">Bioestimuladores</button>
+      <button class="filter" data-cat="toxina">Toxina</button>
+    </div>
+
+    <div class="treat-grid" id="treatGrid"></div>
+
+    <div class="treat-foot" data-reveal>
+      <a href="#agendar" class="btn btn-ghost">Não encontrou? Fale com a equipe →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="about sec-pad" id="sobre">
+  <div class="container about-grid">
+    <div class="about-visual" data-reveal>
+      <div class="frame"></div>
+      <image-slot id="dra-portrait" shape="rounded" radius="8" placeholder="Foto da Dra. Juliana — 3:4 vertical"></image-slot>
+    </div>
+    <div class="about-copy">
+      <span class="eyebrow" data-reveal>Conheça a especialista</span>
+      <h2 data-reveal data-reveal-delay="1">Dra. Juliana <em>Jardim</em></h2>
+      <p class="bio" data-reveal data-reveal-delay="1">Com mais de 20 anos de experiência profissional, é especialista em Estética e Harmonização Facial, reconhecida pelo compromisso com a excelência, a segurança e a personalização de cada tratamento. Destaca-se por utilizar as mais avançadas tecnologias e técnicas para realçar a beleza natural e promover o bem-estar de seus pacientes.</p>
+      <p class="quote" data-reveal data-reveal-delay="2">A hora de cuidar de você é agora.</p>
+      <div class="credentials" data-reveal data-reveal-delay="2">
+        <div class="c"><div class="n">20+</div><div class="t">Anos de experiência</div></div>
+        <div class="c"><div class="n">2</div><div class="t">Clínicas próprias</div></div>
+        <div class="c"><div class="n">100%</div><div class="t">Plano personalizado</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="reviews sec-pad" id="depoimentos">
+  <div class="container">
+    <div class="rev-top">
+      <div class="sec-head" data-reveal>
+        <span class="eyebrow">Depoimentos</span>
+        <h2>O que dizem <em>nossos pacientes</em></h2>
+      </div>
+      <div class="rev-rating" data-reveal data-reveal-delay="1">
+        <div class="score">5.0</div>
+        <div>
+          <div class="stars">★★★★★</div>
+          <div class="meta">Avaliações verificadas no Google</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="rev-carousel" data-reveal>
+    <button class="rev-arrow prev" id="revPrev" aria-label="Depoimento anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+    <div class="rev-viewport" id="revViewport">
+      <div class="rev-track" id="revTrack"></div>
+    </div>
+    <button class="rev-arrow next" id="revNext" aria-label="Próximo depoimento"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="sec-pad" id="perguntas">
+  <div class="container faq-grid">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow">Perguntas frequentes</span>
+      <h2>Tudo o que você <em>precisa saber</em></h2>
+      <p>As dúvidas mais comuns sobre harmonização facial. Não encontrou a sua? Fale com a nossa equipe.</p>
+    </div>
+    <div class="faq-list" id="faqList" data-reveal data-reveal-delay="1"></div>
+  </div>
+</section>
+
+<!-- ============ LOCATIONS ============ -->
+<section class="locs sec-pad" id="localizacao">
+  <div class="container">
+    <div class="sec-head center" data-reveal>
+      <span class="eyebrow center">Endereço &amp; Localização</span>
+      <h2>Onde nos <em>encontrar</em></h2>
+    </div>
+    <div class="loc-grid">
+      <div class="loc-card" data-reveal>
+        <div class="loc-map"><iframe title="Mapa — Brasília" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=CLSW%20302%20Bloco%20C%20Edif%C3%ADcio%20Athenas%20Sudoeste%20Bras%C3%ADlia%20DF&output=embed"></iframe></div>
+        <div class="loc-body">
+          <div class="city">Em Brasília</div>
+          <h3>CLSW 302 — Edf. Athenas</h3>
+          <p>CLSW 302, Bloco C, Sala 127, Edifício Athenas, Setor Sudoeste, Brasília / DF.</p>
+          <a href="https://www.google.com/maps?q=-15.799405,-47.923592" target="_blank" rel="noopener" class="ln">Ver no mapa →</a>
+        </div>
+      </div>
+      <div class="loc-card" data-reveal data-reveal-delay="1">
+        <div class="loc-map"><iframe title="Mapa — Maceió" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=The%20Square%20Park%20Office%20Avenida%20Dr%20Ant%C3%B4nio%20Gomes%20de%20Barros%20625%20Jati%C3%BAca%20Macei%C3%B3%20AL&output=embed"></iframe></div>
+        <div class="loc-body">
+          <div class="city">Em Maceió</div>
+          <h3>The Square Park Office</h3>
+          <p>Av. Dr. Antônio Gomes de Barros, 625, The Square Park Office, Sala 207, Jatiúca, Maceió / AL.</p>
+          <a href="https://www.google.com/maps/place/Dra.+Juliana+Jardim+-+Est%C3%A9tica+e+Harmoniza%C3%A7%C3%A3o+Facial+Avan%C3%A7adas/@-9.6518485,-35.7069654,15z/data=!4m6!3m5!1s0x70145ae44a55555:0xf3b92ff1f9086ac2!8m2!3d-9.6518485!4d-35.7069654!16s%2Fg%2F11j3x103z6" target="_blank" rel="noopener" class="ln">Ver no mapa →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLOSING CTA ============ -->
+<section class="cta" id="agendar">
+  <div class="glow"></div>
+  <div class="cta-ring" style="width:520px;height:520px;bottom:-260px;left:8%;"></div>
+  <div class="cta-ring" style="width:340px;height:340px;top:-120px;right:6%;"></div>
+  <div class="container">
+    <span class="eyebrow center" data-reveal>Sua transformação começa aqui</span>
+    <h2 data-reveal data-reveal-delay="1">A hora de cuidar de <em>você</em> é agora</h2>
+    <p data-reveal data-reveal-delay="2">Agende sua avaliação personalizada e descubra o plano de tratamento ideal para realçar a sua beleza com naturalidade e segurança.</p>
+    <a href="#" class="btn btn-primary" data-reveal data-reveal-delay="2" id="bookBtn">Agendar Consulta <span class="arr">→</span></a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <img src="assets/logo-cream.png" alt="Dra. Juliana Jardim — Harmonização Facial e Ortodontia" class="foot-logo" />
+        <p>Estética e harmonização facial avançadas para realçar a beleza da sua melhor versão.</p>
+        <div class="foot-social">
+          <a href="https://www.instagram.com/dra.julianajardim/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.4" cy="6.6" r="1.2" fill="currentColor" stroke="none"></circle></svg>
+          </a>
+          <a href="https://www.youtube.com/@dra.julianajardim" target="_blank" rel="noopener" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="5" width="19" height="14" rx="4"></rect><path d="M10.2 9.3v5.4l4.6-2.7-4.6-2.7z" fill="currentColor" stroke="none"></path></svg>
+          </a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>Navegação</h4>
+        <a href="#tratamentos">Tratamentos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#perguntas">Perguntas frequentes</a>
+      </div>
+      <div class="foot-col">
+        <h4>Clínicas</h4>
+        <a href="https://www.google.com/maps?q=-15.799405,-47.923592" target="_blank" rel="noopener" class="foot-addr"><strong>Brasília / DF</strong><span>CLSW 302, Bl. C, Sala 127 · Sudoeste</span></a>
+        <a href="https://www.google.com/maps/place/Dra.+Juliana+Jardim+-+Est%C3%A9tica+e+Harmoniza%C3%A7%C3%A3o+Facial+Avan%C3%A7adas/@-9.6518485,-35.7069654,15z/data=!4m6!3m5!1s0x70145ae44a55555:0xf3b92ff1f9086ac2!8m2!3d-9.6518485!4d-35.7069654!16s%2Fg%2F11j3x103z6" target="_blank" rel="noopener" class="foot-addr"><strong>Maceió / AL</strong><span>Av. Dr. Antônio Gomes de Barros, 625 · Jatiúca</span></a>
+      </div>
+      <div class="foot-col">
+        <h4>Contato</h4>
+        <a href="https://wa.me/5561996560777" target="_blank" rel="noopener" id="footWa">+55 61 9656-0777</a>
+        <a href="mailto:contato@drajulianajardim.com.br">contato@drajulianajardim.com.br</a>
+        <a href="#agendar">Agendar Consulta</a>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 Dra. Juliana Jardim · Estética &amp; Harmonização Facial</span>
+      <span>CRO/DF 9046 · CRO/AL 3046 · CRO/PE 7183</span>
+      <span><a href="politica-de-privacidade.html">Política de Privacidade</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ WHATSAPP FLOAT ============ -->
+<button class="wa-float" id="waFloat" aria-label="Falar no WhatsApp">
+  <span class="wa-tip">Fale conosco no WhatsApp</span>
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.247-.694.247-1.289.173-1.413z"/></svg>
+</button>
+
+<!-- ============ BOOKING MODAL ============ -->
+<div class="modal-overlay" id="bookModal" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="bookTitle">
+    <button class="modal-close" id="modalClose" aria-label="Fechar">✕</button>
+    <span class="eyebrow">Agendar Consulta</span>
+    <h3 id="bookTitle">Vamos cuidar de <em>você</em></h3>
+    <p class="desc">Preencha seus dados e continue no WhatsApp para finalizar o agendamento da sua avaliação personalizada.</p>
+    <form id="bookForm">
+      <div class="field"><label for="bf-name">Nome completo</label><input id="bf-name" name="name" type="text" required placeholder="Seu nome" autocomplete="name" /></div>
+      <div class="field"><label for="bf-email">E-mail</label><input id="bf-email" name="email" type="email" required placeholder="seu@email.com" autocomplete="email" /></div>
+      <div class="field"><label for="bf-wa">WhatsApp</label><input id="bf-wa" name="whatsapp" type="tel" required placeholder="(00) 00000-0000" autocomplete="tel" /></div>
+      <button type="submit" class="btn">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.247-.694.247-1.289.173-1.413z"/></svg>
+        Continuar no WhatsApp
+      </button>
+      <p class="reassure">Resposta rápida · Sem compromisso</p>
+    </form>
+  </div>
+</div>
+
+<!-- ============ PROCEDURE MODAL ============ -->
+<div class="modal-overlay" id="procModal" aria-hidden="true">
+  <div class="modal modal-wide" role="dialog" aria-modal="true" aria-labelledby="procTitle">
+    <button class="modal-close" id="procClose" aria-label="Fechar">✕</button>
+    <span class="eyebrow" id="procTag">Procedimento</span>
+    <h3 id="procTitle">—</h3>
+    <p class="desc" id="procDesc">—</p>
+    <div class="proc-actions">
+      <button class="btn btn-primary" id="procBook">Agendar Avaliação <span class="arr">→</span></button>
+      <button class="btn btn-wa" id="procWa"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.247-.694.247-1.289.173-1.413z"/></svg> WhatsApp</button>
+    </div>
+  </div>
+</div>
+
+<!-- direct-edit style overrides -->
+<style id="__om-edit-overrides"></style>
+
+<script>
+/* ---------- data ---------- */
+const TREATMENTS = [
+  { t:"Escultura Labial", cat:"preenchimento", tag:"Preenchimento", d:"Redefine contornos e volume dos lábios com ácido hialurônico, de forma natural e equilibrada.", full:"O preenchimento para escultura labial redefine os contornos dos lábios, realçando sua forma e volume de maneira natural e equilibrada. Utilizando ácido hialurônico, a técnica proporciona hidratação, simetria e projeção, respeitando as características únicas de cada paciente. Ideal para quem busca lábios mais harmoniosos, sem exageros, com resultados imediatos e uma aparência rejuvenescida." },
+  { t:"Contorno Mandibular", cat:"preenchimento", tag:"Preenchimento", d:"Destaca e redefine os traços da mandíbula para um rosto mais harmônico e simétrico.", full:"O preenchimento para definição do contorno mandibular destaca e redefine os traços da mandíbula, proporcionando um rosto mais harmônico e simétrico. A técnica utiliza ácido hialurônico para criar projeção e firmeza, respeitando as características únicas de cada paciente. Com resultados imediatos e naturais, é uma opção eficaz para realçar a estrutura facial e melhorar a autoestima." },
+  { t:"Rinomodelação", cat:"preenchimento", tag:"Preenchimento", d:"Corrige e harmoniza o formato do nariz sem cirurgia, com resultados imediatos e naturais.", full:"A rinomodelação com preenchimento corrige e harmoniza o formato do nariz sem a necessidade de cirurgia. Utilizando ácido hialurônico, a técnica suaviza desníveis, levanta a ponta nasal e corrige assimetrias, proporcionando um nariz mais equilibrado e em harmonia com o rosto. Procedimento rápido, seguro e com resultados naturais." },
+  { t:"Mini-lifting Facial", cat:"fios", tag:"Fios PDO", d:"Fios PDO que redefinem os contornos da face e pescoço, com rejuvenescimento imediato.", full:"O mini-lifting de face e pescoço com fios PDO promove um efeito de rejuvenescimento imediato, redefinindo os contornos faciais e do pescoço e suavizando os sinais de envelhecimento. Ideal para quem busca resultados naturais e sutis, proporciona uma aparência mais firme e harmoniosa, sem intervenções invasivas ou longos períodos de recuperação." },
+  { t:"Fox Eyes", cat:"fios", tag:"Fios PDO", d:"Arqueamento das sobrancelhas com efeito lifting sutil, redefinindo o olhar.", full:"Os fios PDO para Fox Eyes promovem o arqueamento das sobrancelhas, criando um efeito lifting sutil e sofisticado. Utilizando fios bioabsorvíveis, o procedimento redefine o olhar, proporcionando uma aparência mais rejuvenescida e expressiva. Ideal para quem busca harmonizar os traços faciais com resultados naturais e sem cirurgia." },
+  { t:"Bioestimuladores de Colágeno", cat:"bio", tag:"Bioestimuladores", d:"Estimula a produção natural de colágeno, melhorando firmeza, elasticidade e textura da pele.", full:"Os bioestimuladores de colágeno são tratamentos inovadores que estimulam a produção natural de colágeno na pele, melhorando sua firmeza, elasticidade e textura. Indicados para combater a flacidez e os sinais de envelhecimento, atuam de forma progressiva, proporcionando resultados duradouros e uma aparência rejuvenescida — revitalizando a pele de maneira natural e segura." },
+  { t:"Nefertiti — Pescoço", cat:"toxina", tag:"Toxina", d:"Suaviza rugas e linhas marcadas no pescoço, devolvendo uma aparência mais lisa e uniforme.", full:"O procedimento Nefertiti é focado na suavização de rugas e linhas marcadas no pescoço, devolvendo à pele uma aparência mais lisa e uniforme. Com técnicas modernas e pouco invasivas que atuam diretamente nos músculos da região, reduz a tensão que causa as rugas e promove um pescoço mais rejuvenescido e harmonioso." },
+  { t:"Amenização de Rugas", cat:"toxina", tag:"Toxina", d:"Suaviza linhas de expressão preservando a naturalidade e a expressividade do rosto.", full:"A amenização de rugas é um tratamento focado em suavizar linhas de expressão e rugas que se formam com o tempo, promovendo uma aparência mais jovem e descansada. Restaura a suavidade natural da pele sem comprometer a expressividade facial, proporcionando resultados que realçam a beleza e elevam a autoestima de forma sutil e harmoniosa." },
+  { t:"Harmonização Masculina", cat:"preenchimento", tag:"Para eles", d:"Realça traços marcantes, define mandíbula e contorno, respeitando a anatomia masculina.", full:"A harmonização facial masculina é um conjunto de procedimentos voltados para realçar os traços marcantes do rosto, promovendo equilíbrio e simetria. Utiliza preenchimentos, bioestimuladores de colágeno e outras abordagens personalizadas para destacar a mandíbula, definir o contorno facial ou corrigir assimetrias — com resultados naturais e adequados à anatomia masculina." },
+];
+
+const REVIEWS = [
+  { n:"Andressa e Arthur", txt:"Maravilhosa. Todos os detalhes me encantaram, do começo ao fim. Os colaboradores são super atenciosos e a Dra. é impecável." },
+  { n:"Sonia Cruz", txt:"A excelência começa da recepção ao atendimento da Dra. Juliana Jardim. Todo o procedimento foi praticamente indolor." },
+  { n:"Andressa Pereira", txt:"A Dra. Juliana Jardim é uma profissional maravilhosa, excelente, ótimo atendimento. Recomendo de olhos fechados!" },
+  { n:"ju jewel Juliana", txt:"Profissional excelente! Resultado natural e exatamente o que eu esperava. Voltarei sempre." },
+  { n:"Patrícia Melo", txt:"Dra. Juliana Jardim é extremamente profissional e faz um trabalho maravilhoso. Talentosa e delicada." },
+  { n:"Carla Nogueira", txt:"Ambiente acolhedor e resultado impecável. Me senti segura e cuidada em cada etapa do tratamento." },
+];
+
+const FAQ = [
+  { q:"O que é Harmonização Facial?", a:"É um conjunto de procedimentos estéticos minimamente invasivos realizados na face com o objetivo de equilibrar e melhorar a aparência, rejuvenescer ou prevenir o envelhecimento. Combina técnicas como preenchimento com ácido hialurônico, fios de sustentação (PDO), bioestimuladores e rinomodelação — sempre personalizado de acordo com as características e desejos de cada paciente, com foco na naturalidade." },
+  { q:"Como é feita a harmonização facial?", a:"O primeiro passo é uma avaliação detalhada realizada por profissional qualificado. Nela, examinamos a estrutura facial, discutimos suas preocupações e objetivos, e recomendamos os procedimentos adequados. Cada caso é único, e a combinação de procedimentos varia conforme as necessidades individuais." },
+  { q:"Quanto tempo duram os resultados?", a:"Depende do procedimento e de fatores individuais. Em geral: bioestimuladores de colágeno duram de 1 a 2 anos; preenchimento com ácido hialurônico de 1 a 2 anos; fios PDO de 8 meses a 2 anos; e rinomodelação de 1 a 1,5 ano. Sessões de manutenção ajudam a prolongar os efeitos." },
+  { q:"Qual o preço da Harmonização Facial?", a:"O valor depende de quais procedimentos serão indicados para a sua situação específica, conforme as queixas e expectativas relatadas na consulta de avaliação. O plano é sempre personalizado." },
+  { q:"Os procedimentos doem?", a:"O desconforto varia de pessoa para pessoa. Na maioria dos casos é feito o preparo da pele com pomada anestésica, que pode ser seguido de anestesia infiltrativa em locais específicos, para que o procedimento seja realizado com o mínimo de desconforto." },
+  { q:"A partir de que idade posso fazer?", a:"A partir dos 25 anos a pele começa a reduzir a produção de colágeno e elastina, então procedimentos preventivos já são indicados nessa fase. Antes disso, se houver insatisfações específicas — como lábios finos ou queixo pequeno — preenchimentos também podem ser bem indicados." },
+];
+
+/* ---------- render treatments ---------- */
+const grid = document.getElementById('treatGrid');
+function renderTreatments(cat="todos"){
+  const list = cat==="todos" ? TREATMENTS : TREATMENTS.filter(x=>x.cat===cat);
+  grid.innerHTML = list.map((x,i)=>`
+    <article class="card" data-reveal data-reveal-delay="${i%3}">
+      <div class="card-img-wrap">
+        <image-slot id="treat-${x.t.replace(/[^a-z]/gi,'').toLowerCase()}" shape="rounded" radius="0" placeholder="${x.t}"></image-slot>
+        <span class="card-tag">${x.tag}</span>
+      </div>
+      <div class="card-body">
+        <h3>${x.t}</h3>
+        <p>${x.d}</p>
+        <a class="card-link" data-treat="${x.t}" role="button" tabindex="0">Saiba mais <span class="arr">→</span></a>
+      </div>
+    </article>`).join('');
+  observeReveals();
+}
+
+/* ---------- filters ---------- */
+document.getElementById('filters').addEventListener('click', e=>{
+  const btn = e.target.closest('.filter');
+  if(!btn) return;
+  document.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderTreatments(btn.dataset.cat);
+});
+
+/* ---------- reviews (doubled for loop) ---------- */
+const WHATSAPP_NUMBER = "5561996560777";
+const WA_MSG = "Desejo saber mais sobre os serviços oferecidos pela Dra. Juliana Jardim (atendimento em Brasília).";
+function waUrl(extra){ const text = WA_MSG + (extra ? "\n\n" + extra : ""); return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`; }
+function openWa(extra){ window.open(waUrl(extra), "_blank"); }
+const GOOGLE_G = `<svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#4285F4" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#34A853" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#EA4335" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>`;
+const revTrack = document.getElementById('revTrack');
+const revHTML = REVIEWS.map(r=>`
+  <div class="rev-card">
+    <div class="head">
+      <div class="av">${r.n[0]}</div>
+      <div class="who"><div class="nm">${r.n}</div><div class="src">Avaliação verificada</div></div>
+      <span class="g-logo" title="Avaliação do Google">${GOOGLE_G}</span>
+    </div>
+    <div class="stars">★★★★★</div>
+    <p>${r.txt}</p>
+  </div>`).join('');
+revTrack.innerHTML = revHTML;
+
+/* ---------- reviews carousel ---------- */
+const revViewport = document.getElementById('revViewport');
+function revStep(){ const c = revTrack.querySelector('.rev-card'); return c ? c.getBoundingClientRect().width + 24 : 384; }
+function revScroll(dir){
+  const max = revViewport.scrollWidth - revViewport.clientWidth;
+  let target = revViewport.scrollLeft + dir * revStep();
+  if(dir > 0 && revViewport.scrollLeft >= max - 4) target = 0;
+  else if(dir < 0 && revViewport.scrollLeft <= 4) target = max;
+  revViewport.scrollTo({ left: target, behavior: 'smooth' });
+}
+document.getElementById('revNext').addEventListener('click', ()=>revScroll(1));
+document.getElementById('revPrev').addEventListener('click', ()=>revScroll(-1));
+let revAuto = setInterval(()=>revScroll(1), 5000);
+const revCar = document.querySelector('.rev-carousel');
+['mouseenter','focusin','touchstart'].forEach(ev=>revCar.addEventListener(ev, ()=>clearInterval(revAuto)));
+['mouseleave','focusout'].forEach(ev=>revCar.addEventListener(ev, ()=>{ clearInterval(revAuto); revAuto = setInterval(()=>revScroll(1), 5000); }));
+
+/* ---------- faq ---------- */
+const faqList = document.getElementById('faqList');
+faqList.innerHTML = FAQ.map(f=>`
+  <div class="faq-item">
+    <button class="faq-q">${f.q}<span class="faq-icon"></span></button>
+    <div class="faq-a"><div class="faq-a-inner">${f.a}</div></div>
+  </div>`).join('');
+faqList.addEventListener('click', e=>{
+  const q = e.target.closest('.faq-q');
+  if(!q) return;
+  const item = q.parentElement;
+  const ans = item.querySelector('.faq-a');
+  const open = item.classList.contains('open');
+  faqList.querySelectorAll('.faq-item').forEach(it=>{ it.classList.remove('open'); it.querySelector('.faq-a').style.maxHeight=null; });
+  if(!open){ item.classList.add('open'); ans.style.maxHeight = ans.scrollHeight + 'px'; }
+});
+
+/* ---------- nav scroll ---------- */
+const nav = document.getElementById('nav');
+addEventListener('scroll', ()=>{ nav.classList.toggle('scrolled', scrollY>40); });
+
+/* ---------- reveal observer ---------- */
+let io;
+function observeReveals(){
+  if(!io){
+    io = new IntersectionObserver((entries)=>{
+      entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+  }
+  document.querySelectorAll('[data-reveal]:not(.in)').forEach(el=>io.observe(el));
+}
+
+/* ---------- booking modal + whatsapp ---------- */
+const modal = document.getElementById('bookModal');
+const bookForm = document.getElementById('bookForm');
+let lastFocus = null;
+function openModal(){
+  lastFocus = document.activeElement;
+  modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
+  document.body.style.overflow = 'hidden';
+  setTimeout(()=>document.getElementById('bf-name').focus(), 120);
+}
+function closeModal(){
+  modal.classList.remove('open'); modal.setAttribute('aria-hidden','true');
+  document.body.style.overflow = '';
+  if(lastFocus) lastFocus.focus();
+}
+/* every “Agendar Consulta” CTA opens the booking dialog */
+document.querySelectorAll('a[href="#agendar"], #bookBtn').forEach(el=>{
+  el.addEventListener('click', e=>{ e.preventDefault(); openModal(); });
+});
+/* floating button + footer link open WhatsApp directly */
+document.getElementById('waFloat').addEventListener('click', ()=> openWa());
+document.getElementById('footWa').addEventListener('click', e=>{ e.preventDefault(); openWa(); });
+document.getElementById('modalClose').addEventListener('click', closeModal);
+modal.addEventListener('click', e=>{ if(e.target===modal) closeModal(); });
+addEventListener('keydown', e=>{ if(e.key==='Escape' && modal.classList.contains('open')) closeModal(); });
+bookForm.addEventListener('submit', e=>{
+  e.preventDefault();
+  const name = document.getElementById('bf-name').value.trim();
+  const email = document.getElementById('bf-email').value.trim();
+  const wa = document.getElementById('bf-wa').value.trim();
+  openWa(`*Nome:* ${name}\n*E-mail:* ${email}\n*WhatsApp:* ${wa}`);
+  closeModal();
+  bookForm.reset();
+});
+
+/* ---------- procedure modal ---------- */
+const procModal = document.getElementById('procModal');
+let currentProc = null;
+function openProc(t){
+  currentProc = t;
+  document.getElementById('procTag').textContent = t.tag;
+  document.getElementById('procTitle').textContent = t.t;
+  document.getElementById('procDesc').textContent = t.full || t.d;
+  procModal.classList.add('open'); procModal.setAttribute('aria-hidden','false');
+  document.body.style.overflow = 'hidden';
+}
+function closeProc(){ procModal.classList.remove('open'); procModal.setAttribute('aria-hidden','true'); document.body.style.overflow = ''; }
+grid.addEventListener('click', e=>{
+  const link = e.target.closest('.card-link'); if(!link) return;
+  e.preventDefault();
+  const t = TREATMENTS.find(x=>x.t === link.dataset.treat); if(t) openProc(t);
+});
+document.getElementById('procClose').addEventListener('click', closeProc);
+procModal.addEventListener('click', e=>{ if(e.target===procModal) closeProc(); });
+document.getElementById('procBook').addEventListener('click', ()=>{ closeProc(); openModal(); });
+document.getElementById('procWa').addEventListener('click', ()=>{ openWa(`Tenho interesse no procedimento: ${currentProc ? currentProc.t : ''}.`); });
+addEventListener('keydown', e=>{ if(e.key==='Escape' && procModal.classList.contains('open')) closeProc(); });
+
+/* init */
+renderTreatments();
+observeReveals();
+</script>
+</body>
+</html>
